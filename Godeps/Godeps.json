@@ -1,0 +1,16 @@
+{
+	"ImportPath": "github.com/ShevaXu/gru",
+	"GoVersion": "go1.7",
+	"GodepVersion": "v75",
+	"Deps": [
+		{
+			"ImportPath": "github.com/nlopes/slack",
+			"Comment": "v0.0.1-162-g56b573d",
+			"Rev": "56b573d4524ea3daaf0d2611eabe2d897f76adda"
+		},
+		{
+			"ImportPath": "golang.org/x/net/websocket",
+			"Rev": "45e771701b814666a7eb299e6c7a57d0b1799e91"
+		}
+	]
+}
