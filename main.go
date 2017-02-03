@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/nlopes/slack"
@@ -21,7 +22,8 @@ func main() {
 	// When it gets serious
 	//os.Unsetenv(TokenEnv)
 
-	chat := ui.NewSlackChat(token)
+	lg := log.New(os.Stdout, "[SLACK] ", log.Lshortfile|log.LstdFlags)
+	chat := ui.NewSlackChat(token, lg)
 
 	fmt.Println(chat.Listen(func(ctx context.Context, msg interface{}) {
 		if m, ok := msg.(slack.Msg); ok {

@@ -2,7 +2,7 @@ package ui
 
 import (
 	"context"
-	"fmt"
+	"log"
 	"time"
 
 	"github.com/nlopes/slack"
@@ -14,6 +14,7 @@ import (
 type SlackChat struct {
 	api *slack.Client
 	rtm *slack.RTM
+	lg  *log.Logger
 }
 
 func (t *SlackChat) Talk(target, msg string, options interface{}) error {
@@ -39,7 +40,7 @@ func (t *SlackChat) Talk(target, msg string, options interface{}) error {
 		_, _, err := t.api.PostMessage(target, msg, params)
 		return err
 	default:
-		fmt.Println("Unhandled options, send message only")
+		t.lg.Println("Unhandled options, send message only")
 		t.rtm.SendMessage(t.rtm.NewOutgoingMessage(msg, target))
 		return nil
 	}
@@ -51,7 +52,6 @@ const slackMsgHandleTimeout = 5 * time.Second
 
 // Listen keeps receiving the RTM events and dispatches
 // them to the handler function in separate goroutines.
-// TODO: logger needed to replace fmt.Println
 func (t *SlackChat) Listen(f ChatMsgHandler) error {
 	// auth
 	auth, err := t.api.AuthTest()
@@ -70,38 +70,45 @@ func (t *SlackChat) Listen(f ChatMsgHandler) error {
 			return errors.New("invalid slack credentials")
 		// The client has successfully connected to the server.
 		case *slack.HelloEvent:
-			fmt.Println("hello")
+			t.lg.Println("hello")
 		// Pings & pongs are already handled by the websocket.
 		case *slack.ConnectedEvent:
-			fmt.Println("Connected:")
+			t.lg.Println("Connected:")
+		// warnings
+		case *slack.RTMError:
+			t.lg.Println("RTM error:", data)
 		// A team member's presence changed
 		case *slack.PresenceChangeEvent:
-			fmt.Printf("Presence Change: %v\n", data)
+			t.lg.Printf("Presence Change: %v\n", data)
 		// The main payload
 		case *slack.MessageEvent:
-			fmt.Println("Msg:", data.Text)
+			t.lg.Println("Msg:", data.Text)
 			// since posting message through web API trigger message-event
 			// from Bot's own message, an ID check is necessary to avoid infinite loop
 			if data.User != ownId {
 				ctx, _ := context.WithTimeout(context.Background(), slackMsgHandleTimeout)
 				go f(ctx, data.Msg)
 			}
-		// TODO: Other useful event types
-		//case *slack.LatencyReport, *slack.RTMError:
 		default:
-			// Ignore other events..
+			// TODO: consider other events, e.g., *slack.LatencyReport
 		}
 	}
 
 	return nil
 }
 
+// SetLogger resets the Logger.
+func (t *SlackChat) SetLogger(lg *log.Logger) {
+	t.lg = lg
+}
+
 // NewSlackChat uses the token to set the slack client properly,
 // but no connection is made so far.
-func NewSlackChat(token string) *SlackChat {
+func NewSlackChat(token string, lg *log.Logger) *SlackChat {
 	client := slack.New(token)
 	return &SlackChat{
 		api: client,
 		rtm: client.NewRTM(),
+		lg:  lg,
 	}
 }
