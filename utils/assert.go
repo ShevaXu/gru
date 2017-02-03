@@ -1,12 +1,18 @@
 package utils
 
 import (
+	"fmt"
+	"path/filepath"
 	"reflect"
+	"runtime"
 	"testing"
 )
 
+// Inspired by github.com/stretchr/testify/assert
+// & https://github.com/benbjohnson/testing
+
 type Assert struct {
-	t *testing.T
+	t testing.TB
 }
 
 func ObjectsAreEqual(expected, actual interface{}) bool {
@@ -31,12 +37,17 @@ func IsNil(object interface{}) bool {
 	return false
 }
 
-func errorSingle(t *testing.T, msg string, obj interface{}) {
-	t.Errorf("%s: %v", msg, obj)
+func errorSingle(t testing.TB, msg string, obj interface{}) {
+	//t.Errorf("%s: %v", msg, obj)
+	_, file, line, _ := runtime.Caller(2)
+	fmt.Printf("\033[31m\t%s:%d: %s\n\n\t\t%#v\033[39m\n\n", filepath.Base(file), line, msg, obj)
+	t.Fail()
 }
 
-func errorCompare(t *testing.T, msg string, expected, actual interface{}) {
-	t.Errorf("%s:\n\texpected: %v\n\tactual: %v", msg, expected, actual)
+func errorCompare(t testing.TB, msg string, expected, actual interface{}) {
+	_, file, line, _ := runtime.Caller(2)
+	fmt.Printf("\033[31m\t%s:%d: %s\n\n\t\tgot: %#v\n\033[32m\t\texp: %#v\033[39m\n\n", filepath.Base(file), line, msg, actual, expected)
+	t.Fail()
 }
 
 func (a *Assert) Equal(expected, actual interface{}, msg string) {
@@ -63,6 +74,6 @@ func (a *Assert) NotNil(obj interface{}, msg string) {
 	}
 }
 
-func NewAssert(t *testing.T) *Assert {
+func NewAssert(t testing.TB) *Assert {
 	return &Assert{t}
 }
