@@ -1,4 +1,4 @@
-package store
+package store_test
 
 import (
 	"errors"
@@ -7,6 +7,7 @@ import (
 	"os"
 	"testing"
 
+	"github.com/ShevaXu/gru/store"
 	"github.com/ShevaXu/gru/utils"
 )
 
@@ -33,7 +34,7 @@ func TestMain(m *testing.M) {
 func TestBoltStore(t *testing.T) {
 	assert := utils.NewAssert(t)
 
-	s, err := NewBoltStore(tempBoltDBUri)
+	s, err := store.NewBoltStore(tempBoltDBUri)
 
 	assert.NoError(err, "New BoltStore no error")
 	assert.NotNil(s, "New BoltStore not nil")
