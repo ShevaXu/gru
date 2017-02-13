@@ -7,6 +7,10 @@
 	],
 	"Deps": [
 		{
+			"ImportPath": "github.com/ShevaXu/web-utils",
+			"Rev": "000177178c60ea05a0cb740136658c899f7d6a34"
+		},
+		{
 			"ImportPath": "github.com/boltdb/bolt",
 			"Comment": "v1.3.0-54-ga705895",
 			"Rev": "a705895fdad108f053eae7ee011ed94a0541ee13"
