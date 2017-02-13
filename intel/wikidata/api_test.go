@@ -94,3 +94,17 @@ func TestGetBasics(t *testing.T) {
 	_, err = GetBasics(errC, testEntityID)
 	assert.NotNil(err, "Stub returns error")
 }
+
+func TestGetImage(t *testing.T) {
+	// -short set
+	if testing.Short() {
+		t.Skip("Skip real network query")
+	}
+
+	assert := utils.NewAssert(t)
+
+	c := NewClient(utils.DefaultClient).Action(ActionGetClaims).Languages(LangEnglish)
+	img, err := GetImage(c, testEntityID)
+	assert.NoError(err, "GetBasics query no error")
+	assert.Equal("https://upload.wikimedia.org/wikipedia/commons/2/2f/James_Harden_Rockets.jpg", img, "Return image url")
+}
