@@ -37,6 +37,10 @@ func IsNil(object interface{}) bool {
 	return false
 }
 
+func GetAddress(v interface{}) string {
+	return fmt.Sprintf("%p", v)
+}
+
 func errorSingle(t testing.TB, msg string, obj interface{}) {
 	//t.Errorf("%s: %v", msg, obj)
 	_, file, line, _ := runtime.Caller(2)
@@ -50,8 +54,20 @@ func errorCompare(t testing.TB, msg string, expected, actual interface{}) {
 	t.Fail()
 }
 
+func (a *Assert) True(cond bool, msg string) {
+	if !cond {
+		errorSingle(a.t, msg, nil)
+	}
+}
+
 func (a *Assert) Equal(expected, actual interface{}, msg string) {
 	if !ObjectsAreEqual(expected, actual) {
+		errorCompare(a.t, msg, expected, actual)
+	}
+}
+
+func (a *Assert) NotEqual(expected, actual interface{}, msg string) {
+	if ObjectsAreEqual(expected, actual) {
 		errorCompare(a.t, msg, expected, actual)
 	}
 }
