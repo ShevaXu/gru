@@ -6,8 +6,9 @@ import (
 	"net/http"
 	"net/url"
 
-	utils "github.com/ShevaXu/web-utils"
 	"github.com/pkg/errors"
+
+	"github.com/ShevaXu/gru/utils"
 )
 
 const (
@@ -19,7 +20,7 @@ const (
 // Client wraps the API key and makes queries.
 type Client struct {
 	key string
-	cl  *utils.SafeClient
+	cl  utils.HTTPClient
 }
 
 // Query makes request(s) to the TextRazor secure endpoint;
@@ -58,9 +59,9 @@ fail:
 
 // NewClient returns a functional TextRazor Client;
 // the key cannot be changed once set.
-func NewClient(key string) *Client {
+func NewClient(key string, cl utils.HTTPClient) *Client {
 	return &Client{
 		key: key,
-		cl:  utils.StdClient(),
+		cl:  cl,
 	}
 }
