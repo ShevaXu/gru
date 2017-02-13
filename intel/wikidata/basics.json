@@ -1,0 +1,34 @@
+{
+  "entities": {
+    "Q5372": {
+      "pageid": 6315,
+      "ns": 0,
+      "title": "Q5372",
+      "lastrevid": 444506247,
+      "modified": "2017-02-09T11:19:16Z",
+      "type": "item",
+      "id": "Q5372",
+      "labels": {
+        "en": {
+          "language": "en",
+          "value": "basketball"
+        }
+      },
+      "descriptions": {
+        "en": {
+          "language": "en",
+          "value": "team sport played on an indoor court with baskets on either end"
+        }
+      },
+      "aliases": {
+        "en": [
+          {
+            "language": "en",
+            "value": "basket ball"
+          }
+        ]
+      }
+    }
+  },
+  "success": 1
+}
