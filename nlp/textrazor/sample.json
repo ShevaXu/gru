@@ -1,0 +1,304 @@
+{
+  "response": {
+    "sentences": [
+      {
+        "position": 0,
+        "words": [
+          {
+            "position": 0,
+            "startingPos": 0,
+            "endingPos": 1,
+            "stem": "i",
+            "lemma": "i",
+            "token": "I",
+            "partOfSpeech": "PRP",
+            "parentPosition": 2,
+            "relationToParent": "nsubj"
+          },
+          {
+            "position": 1,
+            "startingPos": 2,
+            "endingPos": 6,
+            "stem": "will",
+            "lemma": "will",
+            "token": "will",
+            "partOfSpeech": "MD",
+            "parentPosition": 2,
+            "relationToParent": "aux"
+          },
+          {
+            "position": 2,
+            "startingPos": 7,
+            "endingPos": 9,
+            "stem": "go",
+            "lemma": "go",
+            "token": "go",
+            "partOfSpeech": "VB"
+          },
+          {
+            "position": 3,
+            "startingPos": 10,
+            "endingPos": 12,
+            "stem": "to",
+            "lemma": "to",
+            "token": "to",
+            "partOfSpeech": "TO",
+            "parentPosition": 2,
+            "relationToParent": "prep"
+          },
+          {
+            "position": 4,
+            "startingPos": 13,
+            "endingPos": 20,
+            "stem": "beij",
+            "lemma": "beijing",
+            "token": "beijing",
+            "partOfSpeech": "NNP",
+            "parentPosition": 3,
+            "relationToParent": "pobj"
+          },
+          {
+            "position": 5,
+            "startingPos": 21,
+            "endingPos": 23,
+            "stem": "to",
+            "lemma": "to",
+            "token": "to",
+            "partOfSpeech": "TO",
+            "parentPosition": 6,
+            "relationToParent": "aux"
+          },
+          {
+            "position": 6,
+            "startingPos": 24,
+            "endingPos": 28,
+            "stem": "play",
+            "lemma": "play",
+            "token": "play",
+            "partOfSpeech": "VB",
+            "parentPosition": 2,
+            "relationToParent": "xcomp"
+          },
+          {
+            "position": 7,
+            "startingPos": 29,
+            "endingPos": 39,
+            "stem": "basketbal",
+            "lemma": "basketball",
+            "token": "basketball",
+            "partOfSpeech": "NN",
+            "parentPosition": 6,
+            "relationToParent": "dobj"
+          },
+          {
+            "position": 8,
+            "startingPos": 40,
+            "endingPos": 44,
+            "stem": "next",
+            "lemma": "next",
+            "token": "next",
+            "partOfSpeech": "IN",
+            "parentPosition": 9,
+            "relationToParent": "amod"
+          },
+          {
+            "position": 9,
+            "startingPos": 45,
+            "endingPos": 51,
+            "stem": "monday",
+            "lemma": "monday",
+            "token": "monday",
+            "partOfSpeech": "NNP",
+            "parentPosition": 6,
+            "relationToParent": "tmod"
+          },
+          {
+            "position": 10,
+            "startingPos": 51,
+            "endingPos": 51,
+            "stem": ".",
+            "lemma": ".",
+            "token": ".",
+            "partOfSpeech": ".",
+            "parentPosition": 2,
+            "relationToParent": "punct"
+          }
+        ]
+      }
+    ],
+    "language": "eng",
+    "languageIsReliable": true,
+    "entities": [
+      {
+        "id": 0,
+        "type": [
+          "Place",
+          "PopulatedPlace",
+          "Settlement",
+          "City"
+        ],
+        "matchingTokens": [
+          4
+        ],
+        "entityId": "Beijing",
+        "freebaseTypes": [
+          "/book/book_subject",
+          "/olympics/olympic_host_city",
+          "/business/employer",
+          "/film/film_location",
+          "/travel/transport_terminus",
+          "/olympics/olympic_bidding_city",
+          "/location/cn_municipality",
+          "/business/business_location",
+          "/location/location",
+          "/exhibitions/exhibition_subject",
+          "/location/administrative_division",
+          "/organization/organization_scope",
+          "/location/dated_location",
+          "/government/governmental_jurisdiction",
+          "/location/statistical_region",
+          "/location/citytown",
+          "/periodicals/newspaper_circulation_area",
+          "/travel/travel_destination"
+        ],
+        "confidenceScore": 3.952,
+        "wikiLink": "http://en.wikipedia.org/wiki/Beijing",
+        "matchedText": "beijing",
+        "freebaseId": "/m/01914",
+        "relevanceScore": 0,
+        "entityEnglishId": "Beijing",
+        "startingPos": 13,
+        "endingPos": 20,
+        "wikidataId": "Q956"
+      },
+      {
+        "id": 1,
+        "type": [
+          "Activity",
+          "Sport"
+        ],
+        "matchingTokens": [
+          7
+        ],
+        "entityId": "Basketball",
+        "freebaseTypes": [
+          "/fictional_universe/fictional_organization_type",
+          "/interests/interest",
+          "/sports/school_sports_team",
+          "/book/book_subject",
+          "/cvg/computer_game_subject",
+          "/organization/organization_sector",
+          "/media_common/media_genre",
+          "/broadcast/genre",
+          "/sports/sports_team",
+          "/interests/hobby",
+          "/olympics/olympic_sport",
+          "/cvg/cvg_genre",
+          "/award/competition_type",
+          "/award/award_discipline",
+          "/film/film_subject",
+          "/law/invention",
+          "/media_common/netflix_genre",
+          "/education/field_of_study",
+          "/sports/sport"
+        ],
+        "confidenceScore": 1.442,
+        "wikiLink": "http://en.wikipedia.org/wiki/Basketball",
+        "matchedText": "basketball",
+        "freebaseId": "/m/018w8",
+        "relevanceScore": 0,
+        "entityEnglishId": "Basketball",
+        "startingPos": 29,
+        "endingPos": 39,
+        "wikidataId": "Q5372"
+      },
+      {
+        "id": 2,
+        "type": [
+          "Time"
+        ],
+        "matchingTokens": [
+          8,
+          9
+        ],
+        "entityId": "2017-02-20T00:00:00.000Z",
+        "confidenceScore": 0.5,
+        "wikiLink": "",
+        "matchedText": "next monday",
+        "relevanceScore": 0,
+        "entityEnglishId": "",
+        "startingPos": 40,
+        "endingPos": 51
+      }
+    ],
+    "relations": [
+      {
+        "id": 0,
+        "wordPositions": [
+          1,
+          2,
+          3
+        ],
+        "params": [
+          {
+            "relation": "SUBJECT",
+            "wordPositions": [
+              0
+            ]
+          },
+          {
+            "relation": "OBJECT",
+            "wordPositions": [
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "wordPositions": [
+          1,
+          2,
+          3,
+          5,
+          6
+        ],
+        "params": [
+          {
+            "relation": "SUBJECT",
+            "wordPositions": [
+              0
+            ]
+          },
+          {
+            "relation": "OBJECT",
+            "wordPositions": [
+              4,
+              7,
+              8,
+              9
+            ]
+          }
+        ]
+      }
+    ],
+    "properties": [
+      {
+        "id": 0,
+        "wordPositions": [
+          9
+        ],
+        "propertyPositions": [
+          8
+        ]
+      }
+    ]
+  },
+  "time": 0.006055,
+  "ok": true
+}
