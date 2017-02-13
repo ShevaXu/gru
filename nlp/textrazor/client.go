@@ -20,7 +20,7 @@ const (
 // Client wraps the API key and makes queries.
 type Client struct {
 	key string
-	cl  utils.HTTPClient
+	cl  utils.HTTPFormPoster
 }
 
 // Query makes request(s) to the TextRazor secure endpoint;
@@ -59,7 +59,7 @@ fail:
 
 // NewClient returns a functional TextRazor Client;
 // the key cannot be changed once set.
-func NewClient(key string, cl utils.HTTPClient) *Client {
+func NewClient(key string, cl utils.HTTPFormPoster) *Client {
 	return &Client{
 		key: key,
 		cl:  cl,
