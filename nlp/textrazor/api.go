@@ -78,6 +78,17 @@ type Result struct {
 	Ok   bool     `json:"ok"`
 }
 
+// OneLine gives a pretty one-line output of the sentence
+// formatted as Stanford Parser tagging
+// (http://nlp.stanford.edu:8080/parser/index.jsp).
+func (s *Sentense) OneLine() string {
+	str := "$"
+	for _, w := range s.Words {
+		str += (" " + w.Token + "/" + w.PartOfSpeech)
+	}
+	return str
+}
+
 // Body is the JSON request payload.
 type Body struct {
 	Extractors string `json:"extractors"`

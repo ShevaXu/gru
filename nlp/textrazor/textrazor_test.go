@@ -37,6 +37,10 @@ func TestAPI(t *testing.T) {
 	day, err := time.Parse("2006-01-02T00:00:00.000Z", res.Resp.Entities[2].EntityID)
 	assert.NoError(err, "Time parsed for entity")
 	assert.Equal(20, day.Day(), "Time parsed")
+
+	// one liner
+	assert.Equal("$ I/PRP will/MD go/VB to/TO beijing/NNP to/TO play/VB basketball/NN next/IN monday/NNP ./.",
+		res.Resp.Sentences[0].OneLine(), "Pretty one line")
 }
 
 // TODO: use HTTPClient stub instead of DefaultClient.
