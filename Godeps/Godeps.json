@@ -16,6 +16,10 @@
 			"Rev": "a705895fdad108f053eae7ee011ed94a0541ee13"
 		},
 		{
+			"ImportPath": "github.com/mvryan/fasttag",
+			"Rev": "8d5b4a1da4a7f65be5624394e13a6ac43e6e93b6"
+		},
+		{
 			"ImportPath": "github.com/nlopes/slack",
 			"Comment": "v0.0.1-162-g56b573d",
 			"Rev": "56b573d4524ea3daaf0d2611eabe2d897f76adda"
