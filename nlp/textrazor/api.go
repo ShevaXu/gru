@@ -24,7 +24,7 @@ type Word struct {
 	RelationToParent string `json:"relationToParent,omitempty"`
 }
 
-type Sentense struct {
+type Sentence struct {
 	Position int    `json:"position"`
 	Words    []Word `json:"words"`
 }
@@ -64,7 +64,7 @@ type Property struct {
 }
 
 type Response struct {
-	Sentences          []Sentense `json:"sentences"`
+	Sentences          []Sentence `json:"sentences"`
 	Language           string     `json:"language"`
 	LanguageIsReliable bool       `json:"languageIsReliable"`
 	Entities           []Entity   `json:"entities"`
@@ -81,7 +81,7 @@ type Result struct {
 // OneLine gives a pretty one-line output of the sentence
 // formatted as Stanford Parser tagging
 // (http://nlp.stanford.edu:8080/parser/index.jsp).
-func (s *Sentense) OneLine() string {
+func (s *Sentence) OneLine() string {
 	str := "$"
 	for _, w := range s.Words {
 		str += (" " + w.Token + "/" + w.PartOfSpeech)
