@@ -8,6 +8,7 @@ import (
 
 	"github.com/nlopes/slack"
 
+	"github.com/ShevaXu/gru/nlp"
 	"github.com/ShevaXu/gru/nlp/textrazor"
 	"github.com/ShevaXu/gru/ui"
 	"github.com/ShevaXu/gru/utils"
@@ -35,16 +36,21 @@ func Echo(chat ui.Chatter) ui.ChatMsgHandler {
 func AnalyzeText(chat ui.Chatter, cl *textrazor.Client) ui.ChatMsgHandler {
 	return func(ctx context.Context, msg interface{}) {
 		if m, ok := msg.(slack.Msg); ok {
+			var output string
 			text := m.Text
+			// Query as primary option
 			res, err := cl.Query(textrazor.EntitiesWordsRelations, text)
 			if err != nil {
+				// fallback
 				log.Println(err)
-				return
+				output = nlp.Parse(text).Pretty
+			} else {
+				output = res.Resp.Sentences[0].OneLine()
+				if len(res.Resp.Entities) > 0 {
+					output += (" - " + res.Resp.Entities[0].WikiLink)
+				}
 			}
-			output := res.Resp.Sentences[0].OneLine()
-			if len(res.Resp.Entities) > 0 {
-				output += (" - " + res.Resp.Entities[0].WikiLink)
-			}
+			// send back
 			err = chat.Talk(m.Channel, output, nil)
 			if err != nil {
 				log.Println(err)
